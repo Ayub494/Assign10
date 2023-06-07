@@ -20,7 +20,6 @@ stages
         }
        }
       }
-  }
 stage('Depoy the image')
 {
  steps
@@ -33,4 +32,6 @@ script
      }
     }
    }
+}
+}
 }
