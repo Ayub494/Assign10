@@ -1,0 +1,35 @@
+pipeline
+{
+ environment
+ {
+  registry="ayyub17/demoimage"
+  registryCredential='dockerid'
+  dockerImage= ' '
+ }
+agent any
+
+stages
+  {
+    stage('Build image')
+    {
+      steps
+      {
+       script
+       {
+        dockerImage = docker.build registry +":$BUILD NUMBER"
+        }
+       }
+      }
+stage('Depoy the image')
+{
+ steps
+  {
+script
+   {
+     docker.withRegistry( '',registryCredential )
+     {
+       dockerImage.push()
+     }
+    }
+   }
+}
